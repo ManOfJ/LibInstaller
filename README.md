@@ -1,4 +1,4 @@
-Minecraft - Library Installer
+Library Installer - Minecraft Tool
 ===============================
 
 Version 1.0
@@ -14,8 +14,16 @@ Version 1.0
 2. 使用方法
 ---------------
 
+  - [こちら](http://moj-files.x0.com/libinstaller)からアーカイブ( libinstaller-x.y.zip )をダウンロードしてください
+  - ダウンロードしたアーカイブを適当な場所に展開してください
+  - 展開された libinstaller-x.y/bin フォルダ内の実行スクリプト( Windows: libinstaller.bat, Other: libinstaller ) を実行してください
+  - GUIが起動するので [Wiki](https://github.com/ManOfJ/LibInstaller/wiki) を参照してインストールを行ってください
+
 3. 更新履歴
 ---------------
+
+  - 1.0
+    - 公開
 
 4. ライセンス
 ---------------
