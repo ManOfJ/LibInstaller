@@ -4,7 +4,7 @@ apply plugin: 'application'
 
 group = 'com.manofj.minecraft.moj_libinstaller'
 archivesBaseName = 'libinstaller'
-version = '1.0'
+version = '1.1'
 
 mainClassName = 'com.manofj.minecraft.moj_libinstaller.Main'
 sourceCompatibility = 1.6
@@ -20,3 +20,11 @@ dependencies {
 jar.manifest.attributes = [
   'Main-Class': mainClassName
 ]
+
+distZip {
+  exclude 'gson-*.jar'
+}
+
+distTar {
+  exclude 'gson-*.jar'
+}
