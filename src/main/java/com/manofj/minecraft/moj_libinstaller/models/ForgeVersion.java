@@ -1,27 +1,12 @@
 package com.manofj.minecraft.moj_libinstaller.models;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import com.google.gson.annotations.Since;
 
 import com.manofj.minecraft.moj_libinstaller.utils.ObjectUtils;
 
 
 public final class ForgeVersion {
-
-  private static transient Map< String, Double > versionByJsonSince;
-
-  static {
-
-    Map< String, Double > tmp = new HashMap< String, Double >();
-    tmp.put( "1.8.9", 0.1 );
-    versionByJsonSince = Collections.unmodifiableMap( tmp );
-
-  }
 
   private String inheritsFrom;
   private String id;
@@ -29,35 +14,12 @@ public final class ForgeVersion {
   private String releaseTime;
   private String type;
   private String minecraftArguments;
-  private List< Object > libraries;
+  private List< LibraryData > libraries;
   private String mainClass;
-  private int minimumLauncherVersion;
+  private Integer minimumLauncherVersion;
   private String assets;
   private String jar;
-
-  @Since( 0.1 )
   private Object downloads;
-
-
-  public static double forgeVersionToJsonSince( String forgeVersion ) {
-
-    String mcVersion;
-    {
-
-      int index = forgeVersion.indexOf( '-' );
-      if ( index != -1 )
-        mcVersion = forgeVersion.substring( 0, index );
-      else
-        mcVersion = forgeVersion;
-
-    }
-
-    if ( versionByJsonSince.containsKey( mcVersion ) )
-      return versionByJsonSince.get( mcVersion );
-
-    return 0;
-
-  }
 
 
   public String getInheritsFrom() {
@@ -84,15 +46,15 @@ public final class ForgeVersion {
     return minecraftArguments;
   }
 
-  public List< Object > getLibraries() {
-    return libraries == null ? null : new ArrayList< Object >( libraries );
+  public List< LibraryData > getLibraries() {
+    return ( libraries == null ) ? null : new ArrayList< LibraryData >( libraries );
   }
 
   public String getMainClass() {
     return mainClass;
   }
 
-  public int getMinimumLauncherVersion() {
+  public Integer getMinimumLauncherVersion() {
     return minimumLauncherVersion;
   }
 
@@ -103,6 +65,11 @@ public final class ForgeVersion {
   public String getJar() {
     return jar;
   }
+
+  public Object getDownloads() {
+    return downloads;
+  }
+
 
   public void setInheritsFrom( String inheritsFrom ) {
     this.inheritsFrom = inheritsFrom;
@@ -128,17 +95,15 @@ public final class ForgeVersion {
     this.minecraftArguments = minecraftArguments;
   }
 
-  public void setLibraries( List< Object > libraries ) {
-    this.libraries = libraries;
-    if ( libraries != null )
-      this.libraries = new ArrayList< Object >( libraries );
+  public void setLibraries( List< LibraryData > libraries ) {
+    this.libraries = ( libraries == null ) ? null : new ArrayList< LibraryData >( libraries );
   }
 
   public void setMainClass( String mainClass ) {
     this.mainClass = mainClass;
   }
 
-  public void setMinimumLauncherVersion( int minimumLauncherVersion ) {
+  public void setMinimumLauncherVersion( Integer minimumLauncherVersion ) {
     this.minimumLauncherVersion = minimumLauncherVersion;
   }
 
@@ -150,14 +115,10 @@ public final class ForgeVersion {
     this.jar = jar;
   }
 
-
-  public Object getDownloads() {
-    return downloads;
-  }
-
   public void setDownloads( Object downloads ) {
     this.downloads = downloads;
   }
+
 
   @Override
   public boolean equals( Object obj ) {
@@ -188,18 +149,18 @@ public final class ForgeVersion {
   public int hashCode() {
 
     int result = 1;
-    result = 31 * result + ( inheritsFrom != null ? inheritsFrom.hashCode() : 0 );
-    result = 31 * result + ( id != null ? id.hashCode() : 0 );
-    result = 31 * result + ( time != null ? time.hashCode() : 0 );
-    result = 31 * result + ( releaseTime != null ? releaseTime.hashCode() : 0 );
-    result = 31 * result + ( type != null ? type.hashCode() : 0 );
-    result = 31 * result + ( minecraftArguments != null ? minecraftArguments.hashCode() : 0 );
-    result = 31 * result + ( libraries != null ? libraries.hashCode() : 0 );
-    result = 31 * result + ( mainClass != null ? mainClass.hashCode() : 0 );
-    result = 31 * result + minimumLauncherVersion;
-    result = 31 * result + ( assets != null ? assets.hashCode() : 0 );
-    result = 31 * result + ( jar != null ? jar.hashCode() : 0 );
-    result = 31 * result + ( downloads != null ? downloads.hashCode() : 0 );
+    result = 31 * result + ( inheritsFrom           == null ? 0 : inheritsFrom.hashCode() );
+    result = 31 * result + ( id                     == null ? 0 : id.hashCode() );
+    result = 31 * result + ( time                   == null ? 0 : time.hashCode() );
+    result = 31 * result + ( releaseTime            == null ? 0 : releaseTime.hashCode() );
+    result = 31 * result + ( type                   == null ? 0 : type.hashCode() );
+    result = 31 * result + ( minecraftArguments     == null ? 0 : minecraftArguments.hashCode() );
+    result = 31 * result + ( libraries              == null ? 0 : libraries.hashCode() );
+    result = 31 * result + ( mainClass              == null ? 0 : mainClass.hashCode() );
+    result = 31 * result + ( minimumLauncherVersion == null ? 0 : minimumLauncherVersion.hashCode() );
+    result = 31 * result + ( assets                 == null ? 0 : assets.hashCode() );
+    result = 31 * result + ( jar                    == null ? 0 : jar.hashCode() );
+    result = 31 * result + ( downloads              == null ? 0 : downloads.hashCode() );
     return result;
 
   }

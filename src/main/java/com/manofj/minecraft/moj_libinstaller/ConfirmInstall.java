@@ -154,14 +154,24 @@ class ConfirmInstall extends JPanel {
         File jsonPath = forgeVersionByJsonPath.get( forgeVersion );
         Libraries libraries = GsonUtils.readFromJson( jsonPath, Libraries.class );
 
+        Map< String, LibraryData > latestLibs = new HashMap< String, LibraryData >();
+        for ( LibraryData data : detail ) {
+          String name = data.getName();
+          String mavenId = name.substring( 0, name.lastIndexOf( ':' ) );
+
+          LibraryData latest = latestLibs.get( mavenId );
+          if ( latest == null || name.compareTo( latest.getName() ) > 0 )
+            latestLibs.put( mavenId, data );
+
+        }
+
+        Set< LibraryData > libs = new HashSet< LibraryData >( latestLibs.values() );
         List< LibraryData > values = libraries.getValues();
-        if ( values == null ) values = Collections.emptyList();
-        detail.removeAll( values );
+        if ( values == null )
+          values = Collections.emptyList();
+        libs.removeAll( values );
 
-        if ( detail.isEmpty() ) continue;
-
-        Set< LibraryData > data = new HashSet< LibraryData >( detail );
-        installDetails.put( forgeVersion, data );
+        if ( !libs.isEmpty() ) installDetails.put( forgeVersion, libs );
 
       }
 

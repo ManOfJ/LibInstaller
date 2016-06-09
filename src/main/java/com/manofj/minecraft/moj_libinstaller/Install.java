@@ -8,6 +8,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -111,9 +113,26 @@ class Install extends JPanel {
 
       ForgeVersion version = GsonUtils.readForgeVersion( path, forgeVersion );
 
-      List< Object > libraries = version.getLibraries();
-      if ( libraries != null )
+      List< LibraryData > libraries = version.getLibraries();
+      if ( libraries != null ) {
+
+        Set< String > removeLibs = new HashSet< String >();
+        for ( LibraryData data : installDetails.get( forgeVersion ) ) {
+          String name = data.getName();
+          removeLibs.add( name.substring( 0, name.lastIndexOf( ':' ) ) );
+        }
+
+        Iterator< LibraryData > it = libraries.iterator();
+        while ( it.hasNext() ) {
+          String name = it.next().getName();
+
+          if ( removeLibs.contains( name.substring( 0, name.lastIndexOf( ':' ) ) ) )
+            it.remove();
+
+        }
+
         libraries.addAll( installDetails.get( forgeVersion ) );
+      }
       version.setLibraries( libraries );
 
       BufferedWriter bw = null;

@@ -115,8 +115,7 @@ public final class GsonUtils {
 
   public static ForgeVersion readForgeVersion( File path, String forgeVersion ) {
 
-    double since = ForgeVersion.forgeVersionToJsonSince( forgeVersion );
-    Gson gson = new GsonBuilder().setVersion( since ).create();
+    Gson gson = new GsonBuilder().create();
     return readFromJson( path, ForgeVersion.class, gson );
 
   }

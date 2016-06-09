@@ -1,7 +1,7 @@
 Library Installer - Minecraft Tool
 ===============================
 
-Version 1.0
+Version 1.1
 
 0. 既知の不具合
 ---------------
@@ -19,13 +19,22 @@ Version 1.0
   - 展開された libinstaller-x.y/bin フォルダ内の実行スクリプト( Windows: libinstaller.bat, Other: libinstaller ) を実行してください
   - GUIが起動するので [Wiki](https://github.com/ManOfJ/LibInstaller/wiki) を参照してインストールを行ってください
 
-3. 更新履歴
+3. 今後の更新予定
+---------------
+
+  - インストールするライブラリの選択機能を改善
+    - Modのバージョンごとに設定を変更できるようにする
+
+4. 更新履歴
 ---------------
 
   - 1.0
     - 公開
+  - 1.1
+    - 一部機能の改善
+    - [MC-Commons](https://github.com/ManOfJ/MC-Commons) のインストール設定ファイルを同梱
 
-4. ライセンス
+5. ライセンス
 ---------------
 
   このツールは [MIT License](./LICENSE.md) のもとで提供されています
