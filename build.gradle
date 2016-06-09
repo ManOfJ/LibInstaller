@@ -23,8 +23,14 @@ jar.manifest.attributes = [
 
 distZip {
   exclude 'gson-*.jar'
+  into( "$archivesBaseName-$version/bin" ) {
+    from( 'json' ) { include 'libinstall-*.json' }
+  }
 }
 
 distTar {
   exclude 'gson-*.jar'
+  into( "$archivesBaseName-$version/bin" ) {
+    from( 'json' ) { include 'libinstall-*.json' }
+  }
 }
