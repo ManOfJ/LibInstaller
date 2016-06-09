@@ -15,13 +15,11 @@ public final class Libraries {
 
 
   public List< LibraryData > getValues() {
-    return values == null ? null : new ArrayList< LibraryData >( values );
+    return ( values == null ) ? null : new ArrayList< LibraryData >( values );
   }
 
   public void setValues( List< LibraryData > values ) {
-    this.values = values;
-    if ( values != null )
-      this.values = new ArrayList< LibraryData >( values );
+    this.values = ( values == null ) ? null : new ArrayList< LibraryData >( values );
   }
 
 
@@ -43,7 +41,7 @@ public final class Libraries {
   public int hashCode() {
 
     int result = 1;
-    result = 31 * result + ( getValues() == null ? 0 : getValues().hashCode() );
+    result = 31 * result + ( values == null ? 0 : values.hashCode() );
     return result;
 
   }
